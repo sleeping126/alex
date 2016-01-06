@@ -1,0 +1,20 @@
+{
+  "gitbook": "2.0.0",
+  "title": "ALEX",
+  "description": "Documentation for ALEX",
+  "language": "en",
+  "direction": "ltr",
+  "styles": {
+    "website": "assets/styles/website.css"
+  },
+  "variables": {
+    "version": "1.0.0"
+  },
+  "links": {
+    "sidebar": {
+      " ": "#",
+      "Homepage": "https://alex.github.com",
+      "ALEX on Github": "https://github.com"
+    }
+  }
+}

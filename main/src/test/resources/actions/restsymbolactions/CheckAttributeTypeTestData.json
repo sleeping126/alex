@@ -1,5 +1,0 @@
-{
-  "type": "rest_checkAttributeType",
-  "attribute": "object.attribute",
-  "jsonType": "STRING"
-}

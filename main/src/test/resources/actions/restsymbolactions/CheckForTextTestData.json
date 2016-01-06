@@ -1,5 +1,0 @@
-{
-  "type": "rest_checkForText",
-  "value": "Lorem Ipsum",
-  "regexp": true
-}

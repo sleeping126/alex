@@ -1,6 +1,0 @@
-{
-  "type": "assertCounter",
-  "name": "counter",
-  "value": 5,
-  "operator": "EQUAL"
-}

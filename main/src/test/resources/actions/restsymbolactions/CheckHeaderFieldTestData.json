@@ -1,6 +1,0 @@
-{
-  "type": "rest_checkHeaderField",
-  "key": "Key",
-  "value": "Value",
-  "regexp": true
-}
