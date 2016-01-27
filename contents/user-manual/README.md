@@ -225,9 +225,9 @@ and ALEX offers a subset of these that are presented in the table below.
 
 | Name               | Description                                           |
 |--------------------|-------------------------------------------------------|
-| CheckNode          | Check if a certain element is present on the website. |
-| CheckText          | Check if a certain text is part of the website body.  |
-| CheckTitle         | Checks if the page title is a certain string          |
+| Check Node         | Check if a certain element is present on the website. |
+| Check Text         | Check if a certain text is part of the website body.  |
+| Check Title        | Checks if the page title is a certain string          |
 | Clear              | Clear an input field.                                 |
 | Click              | Click on an element.                                  |
 | Click Link By Text | Click on a link with a specific text value            |
@@ -235,6 +235,8 @@ and ALEX offers a subset of these that are presented in the table below.
 | Goto               | Request a specific site.                              |
 | Submit             | Submit a form.                                        |
 | Select             | Select an option form an select input field.          |
+| Wait for Title     | Wait until the title of a page changes                |
+| Wait for Node      | Wait until the state of an element changes            |
 
 More detailed information about all the parameters of each web action is omitted as this point, since the forms in the
 front-end should be labeled sufficiently.
@@ -304,8 +306,10 @@ String and Integer values to other actions.
 | Execute Symbol             | Include and execute another symbol.                                 |
 | SetCounter                 | Set a counter to a new value.                                       |
 | SetVariable                | Set a variable to a new value.                                      |
+| SetVariableByCookie        | Set a variable to the value of a cookie                             |
 | SetVariableByHTMLElement   | Set a variable to a value form a website element.                   |
 | SetVariableByJSONAttribute | Set a variable to a value form a JSON response.                     |
+| SetVariableByNodeAttribute | Set a variable to the value of an attribute of an element.          |
 | Wait                       | Wait for a specific amount of time.                                 |
 
 <div class="alert alert-info">
