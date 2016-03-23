@@ -2,6 +2,7 @@
 
 Automata Learning Experience (ALEX) is a web application that allows you run automated tests on web applications and JSON-based REST services using Active Automata Learning.
 
+
 ## How it works
 
 Let us take a look at the example of an authentication system.
@@ -40,6 +41,7 @@ How to check for and handle these errors is described in the user manual.
 
 If you want to know more about Active Automata Learning in depth, head over to available papers on that topic.
 
+
 ## Installation and first login
 
 We developed and tested ALEX using either Windows 8.1 and higher and Linux Ubuntu 14.10 and higher.
@@ -56,8 +58,8 @@ Password: *admin*
 Make sure you have Java 8 installed on your system.
 
 1. Download the latest version from here.
-2. Open a terminal and start the jar file using `java -jar alex.jar`
-3. Open *http://localhost:8080* in a web browser
+2. Open a terminal and start the jar file using `java -jar alex.war [--port=PORT]`
+3. Open *http://localhost:8000* (or with your custom port) in a web browser
 
 #### From source
 
@@ -71,11 +73,12 @@ For the Installation from the source files make sure your system matches the fol
 
 To install and run ALEX, Execute the following commands:
 
-1. `git clone https://github.com/learnlib/alex`
+1. `git clone https://github.com/learnlib/alex.git`
 2. `cd alex`
 3. `mvn install [-DskipTests]`
-4. `mvn jetty:run [-Djetty.port=PORT]`
-5. open *http://localhost:8080* in a web browser
+4. `mvn spring-boot:run [-Dport=PORT]`
+5. open *http://localhost:8000* (or with your custom port) in a web browser
+
 
 ## Further reading
 
@@ -84,6 +87,7 @@ To install and run ALEX, Execute the following commands:
 * Screencasts
 * Developer docs
 * Papers on Active Automata Learning
+
 
 ## FAQs
 
@@ -113,7 +117,6 @@ But feel free to test it on your Raspberry PI.
 Initially, we did not develop ALEX as a solution to all situations that may occur in a web application, but to the most common ones.
 If you think a key feature is missing, feel free to submit an issue and we will see what we can do.
 
-*Note: Surprisingly, neither of the above questions have been asked at any point in time. But it it still a neat way to package information that do not fit anywhere else in the documentation.*
 
 ## Maintainers
 
@@ -126,3 +129,4 @@ If you think a key feature is missing, feel free to submit an issue and we will 
 [nodejs]: https://nodejs.org
 [grunt]:  http://gruntjs.com
 [bower]:  http://bower.io
+
