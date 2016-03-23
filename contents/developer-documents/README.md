@@ -8,7 +8,6 @@ To build a packaged version of ALEX from the source, make sure you checked out t
 
 ```bash
 mvn clean package
-mvn site assembly:single -P release
 ```
 
 Afterwards the *ALEX-xxx.tar.gz* archive is created in the `target` directory.
