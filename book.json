@@ -15,5 +15,6 @@
       " ": "#",
       "Homepage": "http://learnlib.github.io/alex"
     }
-  }
+  },
+  "plugins": ["collapsible-menu"]
 }
