@@ -35,7 +35,7 @@ _The base64 encoded combination of username and password is only required for mo
 1. Start ALEX under a different port than 8000
 2. Login as a user
 3. Create a new project with the url *http://localhost/wordpress/wp-json/wp/v2*
-3. Import symbols from the [wordpress-symbols.json](../../assets/files/wordpress-symbols.json)
+3. Import symbols from the [wordpress-symbols.json](../../../assets/files/wordpress-symbols.json)
 4. Start learning, use symbol *reset* as reset symbol
 
 ## Results
@@ -48,7 +48,7 @@ For each test, an equivalence oracle has been chosen that randomly creates membe
 Here, we set it up to create 50 MQs with a minimum length of 25, a maximum length of 50 to approximate an equivalence query.
 
 We modeled 19 symbols for logging in with different user roles and doing actions like creating, updating and deleting posts and handling comments.
-The final hypothesis has 31 states, which can be seen [here](../../assets/files/wordpress-hypothesis.svg).
+The final hypothesis has 31 states, which can be seen [here](../../../assets/files/wordpress-hypothesis.svg).
 
 If you are interested in numbers, here are the statistics of how well different algorithms performed on the specified system.
 Note that the L\* algorithm didn't even terminate after more than a day, so we terminated it manually.

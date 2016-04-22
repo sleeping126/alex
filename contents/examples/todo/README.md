@@ -12,4 +12,4 @@ from the setup of ToDo and ending with a learned model of it. We do not offer an
 for ToDo since we want this guide to be an explorative process for you (and to be honest we do not have any
 documentation).
 
-All required files to start and learn ToDo can be downloaded here: [ToDo.zip](../../assets/files/ToDo.zip).
+All required files to start and learn ToDo can be downloaded here: [ToDo.zip](../../../assets/files/ToDo.zip).
