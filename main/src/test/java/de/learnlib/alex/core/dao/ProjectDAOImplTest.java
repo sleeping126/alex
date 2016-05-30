@@ -33,6 +33,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -45,7 +46,7 @@ import static org.junit.Assert.fail;
 public class ProjectDAOImplTest {
 
     private static final int PROJECT_COUNT = 5;
-    private static final String BASE_URL = "http://example.com";
+    private static final List<String> BASE_URLS = Collections.singletonList("http://example.com");
 
     private static UserDAO userDAO;
     private static ProjectDAO projectDAO;
@@ -70,7 +71,7 @@ public class ProjectDAOImplTest {
 
         project = new Project();
         project.setName("ProjectDAOImplTest Project ");
-        project.setBaseUrl(BASE_URL);
+        project.setBaseUrls(BASE_URLS);
         project.setDescription("Lorem Ipsum");
         project.setUser(user);
 
@@ -95,7 +96,7 @@ public class ProjectDAOImplTest {
 
         assertNotNull(p2);
         assertEquals(project.getName(), p2.getName());
-        assertEquals(BASE_URL, project.getBaseUrl());
+        assertEquals(BASE_URLS, project.getBaseUrls());
         assertEquals("Lorem Ipsum", project.getDescription());
 
         assertEquals(1, p2.getGroups().size());
@@ -107,7 +108,7 @@ public class ProjectDAOImplTest {
     @Test(expected = ValidationException.class)
     public void shouldNotCreateAProjectWithoutAName() {
         Project p2 = new Project();
-        project.setBaseUrl(BASE_URL);
+        project.setBaseUrls(BASE_URLS);
 
         projectDAO.create(p2); // should fail
     }
@@ -146,7 +147,7 @@ public class ProjectDAOImplTest {
         for (int i = 0; i < PROJECT_COUNT; i++) {
             Project tmpProject = new Project();
             tmpProject.setName("Project No. " + i);
-            tmpProject.setBaseUrl(BASE_URL);
+            tmpProject.setBaseUrls(BASE_URLS);
             tmpProject.setUser(user);
             projectDAO.create(tmpProject);
             projects.add(tmpProject);
@@ -190,7 +191,7 @@ public class ProjectDAOImplTest {
     public void shouldFailOnUpdateWhenTheNameIsMissing() throws NotFoundException {
         Project p2 = new Project();
         p2.setName("Test Project - Update Without Name");
-        p2.setBaseUrl(BASE_URL);
+        p2.setBaseUrls(BASE_URLS);
         projectDAO.create(p2);
 
         p2.setName("");
@@ -202,10 +203,10 @@ public class ProjectDAOImplTest {
     public void shouldFailOnUpdateWhenTheBaseUrlIsMissing() throws NotFoundException {
         Project p2 = new Project();
         p2.setName("Test Project - Update Without Base URL");
-        p2.setBaseUrl(BASE_URL);
+        p2.setBaseUrls(BASE_URLS);
         projectDAO.create(p2);
 
-        p2.setBaseUrl("");
+        p2.setBaseUrls(Collections.singletonList(""));
 
         projectDAO.update(p2); // should fail
     }
@@ -214,7 +215,7 @@ public class ProjectDAOImplTest {
     public void shouldFailOnUpdateWithNotUniqueName() throws NotFoundException {
         Project p2 = new Project();
         p2.setName("Test Project - Update Without Unique Name");
-        p2.setBaseUrl(BASE_URL);
+        p2.setBaseUrls(BASE_URLS);
         projectDAO.create(p2);
 
         p2.setName(project.getName());

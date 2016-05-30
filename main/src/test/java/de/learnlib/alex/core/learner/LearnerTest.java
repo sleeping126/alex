@@ -30,7 +30,6 @@ import de.learnlib.alex.core.learner.connectors.ConnectorContextHandlerFactory;
 import de.learnlib.alex.core.learner.connectors.ConnectorManager;
 import de.learnlib.alex.core.learner.connectors.WebBrowser;
 import de.learnlib.alex.exceptions.NotFoundException;
-import de.learnlib.mapper.ContextExecutableInputSUL;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -38,6 +37,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -52,7 +52,7 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class LearnerTest {
 
-    private static final String FAKE_URL = "http://example.com";
+    private static final List<String> BASIS_URLS = Collections.singletonList("http://example.com");
     private static final int SYMBOL_AMOUNT = 5;
 
     @Mock
@@ -86,7 +86,7 @@ public class LearnerTest {
 
     @Before
     public void setUp() {
-        given(project.getBaseUrl()).willReturn(FAKE_URL);
+        given(project.getBaseUrls()).willReturn(BASIS_URLS);
         given(learnerConfiguration.getBrowser()).willReturn(WebBrowser.HTMLUNITDRIVER);
         given(contextHandlerFactory.createContext(project, WebBrowser.HTMLUNITDRIVER))
                 .willReturn(contextHandler);

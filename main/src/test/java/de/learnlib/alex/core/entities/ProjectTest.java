@@ -22,6 +22,7 @@ import org.junit.Test;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -77,7 +78,7 @@ public class ProjectTest {
         Project p = mapper.readValue(file, Project.class);
 
         assertEquals("Test Project", p.getName());
-        assertEquals("http://example.com", p.getBaseUrl());
+        assertEquals(Collections.singletonList("http://example.com"), p.getBaseUrls());
         assertEquals(LOREM_IPSUM, p.getDescription());
         assertTrue(p.getSymbols() != null);
         assertEquals(1, p.getSymbolsSize());

@@ -41,6 +41,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -84,7 +85,7 @@ public class SymbolDAOImplTest {
         // create project
         project = new Project();
         project.setName("SymbolDAO - Test Project");
-        project.setBaseUrl("http://example.com/");
+        project.setBaseUrls(Collections.singletonList("http://example.com/"));
         project.setUser(user);
         projectDAO.create(project);
 
@@ -398,7 +399,7 @@ public class SymbolDAOImplTest {
         assertEquals(pairs.size(), symbolsFromDB.size());
         for (Symbol x : symbolsFromDB) {
             int index = symbolsFromDB.indexOf(x);
-            assertTrue(x + " was not in the returned Symbols from the DB", index > -1);
+            assertTrue(x.getName() + " was not in the returned Symbols from the DB", index > -1);
             Symbol webSymbolInDb = symbolsFromDB.get(index);
             assertEquals(x.getActions().size(), webSymbolInDb.getActions().size());
         }

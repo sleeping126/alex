@@ -27,6 +27,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -65,7 +66,7 @@ public class SymbolGroupDAOImplTest {
 
         project = new Project();
         project.setName("SymbolGroupDAO - Test Project");
-        project.setBaseUrl("http://example.com/");
+        project.setBaseUrls(Collections.singletonList("http://example.com/"));
         project.setUser(user);
         projectDAO.create(project);
 

@@ -24,6 +24,8 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -31,9 +33,11 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -70,12 +74,12 @@ public class Project implements Serializable {
     private String name;
 
     /**
-     * The root URL of the project.
+     * The root URLs of the project.
      *
      * @requiredField
      */
-    @NotBlank
-    private String baseUrl;
+    @ElementCollection
+    private List<String> baseUrls;
 
     /**
      * A text to describe the Project.
@@ -226,21 +230,21 @@ public class Project implements Serializable {
     }
 
     /**
-     * Get the root URL of the Project.
+     * Get the root URLs of the Project.
      *
-     * @return The base URl.
+     * @return The base URLs.
      */
-    public String getBaseUrl() {
-        return baseUrl;
+    public List<String> getBaseUrls() {
+        return baseUrls;
     }
 
     /**
-     * Set the base URL of the Project.
+     * Set the base URLs of the Project.
      *
-     * @param baseUrl The new base URL.
+     * @param baseUrls The new base URLs.
      */
-    public void setBaseUrl(String baseUrl) {
-        this.baseUrl = baseUrl;
+    public void setBaseUrls(List<String> baseUrls) {
+        this.baseUrls = baseUrls;
     }
 
     /**
@@ -448,7 +452,7 @@ public class Project implements Serializable {
 
     @Override
     public String toString() {
-        return "[Project " + id + "]: " + user + ", " + name + "(" + baseUrl + ")";
+        return "[Project " + id + "]: " + user + ", " + name + "(" + baseUrls + ")";
     }
 
 }

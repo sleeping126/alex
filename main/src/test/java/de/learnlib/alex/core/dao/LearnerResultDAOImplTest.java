@@ -45,6 +45,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.validation.ValidationException;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -92,7 +93,7 @@ public class LearnerResultDAOImplTest {
 
         project = new Project();
         project.setName("LearnerResultDAO - Test Project");
-        project.setBaseUrl("http://example.com/");
+        project.setBaseUrls(Collections.singletonList("http://example.com/"));
         project.setUser(user);
         projectDAO.create(project);
 

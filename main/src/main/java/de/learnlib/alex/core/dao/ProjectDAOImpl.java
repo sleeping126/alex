@@ -247,7 +247,7 @@ public class ProjectDAOImpl implements ProjectDAO {
 
             // apply changes
             projectInDB.setName(project.getName());
-            projectInDB.setBaseUrl(project.getBaseUrl());
+            projectInDB.setBaseUrls(project.getBaseUrls());
             projectInDB.setDescription(project.getDescription());
 
             session.update(projectInDB);

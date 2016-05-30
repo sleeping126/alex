@@ -34,6 +34,7 @@ import javax.ws.rs.core.Application;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -93,7 +94,7 @@ public class ProjectResourceTest extends JerseyTest {
     public void shouldCreateAProject() {
         String json = "{\"id\": " + project.getId() + ","
                         + "\"name\": \"" + project.getName() + "\","
-                        + "\"baseUrl\": \"" + project.getBaseUrl() + "\","
+                        + "\"baseUrls\": [ \"" + project.getBaseUrls() + "\" ],"
                         + "\"description\": \"" + project.getDescription() + "\"}";
         Response response = target("/projects").request().header("Authorization", adminToken).post(Entity.json(json));
 
@@ -116,7 +117,7 @@ public class ProjectResourceTest extends JerseyTest {
     public void shouldReturn400IfProjectNameAlreadyExistsForAUser() {
         Project p = new Project();
         p.setUser(admin);
-        p.setBaseUrl("http://abc");
+        p.setBaseUrls(Collections.singletonList("http://abc"));
         p.setName("Test Project");
 
         willThrow(new ValidationException("Test Message")).given(projectDAO).create(project);
@@ -193,7 +194,7 @@ public class ProjectResourceTest extends JerseyTest {
     public void shouldUpdateTheRightProject() throws NotFoundException {
         String json = "{\"id\": " + project.getId() + ","
                         + "\"name\": \"" + project.getName() + "\","
-                        + "\"baseUrl\": \"" + project.getBaseUrl() + "\","
+                        + "\"baseUrls\": [ \"" + project.getBaseUrls() + "\" ],"
                         + "\"description\": \"" + project.getDescription() + "\"}";
 
         target("/project").request().header("Authorization", adminToken).post(Entity.json(project));

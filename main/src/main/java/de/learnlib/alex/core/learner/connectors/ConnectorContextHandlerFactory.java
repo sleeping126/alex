@@ -36,7 +36,9 @@ public class ConnectorContextHandlerFactory {
      */
     public ConnectorContextHandler createContext(Project project, WebBrowser browser) {
         ConnectorContextHandler context = new ConnectorContextHandler();
-        String baseUrl = project.getBaseUrl();
+
+        // TODO:
+        String baseUrl = project.getBaseUrls().get(0);
 
         context.addConnector(new WebSiteConnector(baseUrl, browser));
         context.addConnector(new WebServiceConnector(baseUrl));

@@ -26,6 +26,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.validation.ValidationException;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -66,7 +67,7 @@ public class CounterDAOImplTest {
         // create project
         project = new Project();
         project.setName("SymbolDAO - Test Project");
-        project.setBaseUrl("http://example.com/");
+        project.setBaseUrls(Collections.singletonList("http://example.com/"));
         project.setUser(user);
         projectDAO.create(project);
 
