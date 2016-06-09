@@ -19,16 +19,16 @@ application lays a focus on the ease to use of the tool while offering an extens
 * Active Automata Learing of web applications and web services
 * Support for managing and learning multiple applications
 * Graphical symbol construction
-* Graphical learning process modelling
+* Graphical learn process modelling
 * Automatic generation and visualization of
     * Hypotheses
-    * Internal da structures (Observation Table and Discrimination Tree)
-    * Statistics regarding learning results
+    * Internal data structures (Observation Table and Discrimination Tree)
+    * Statistics regarding learn results
 * Simultaneous learning of web applications and web services
 * Supported algorithms: L\*, TTT, Discrimination Tree, DHC
 * Supported equivalence oracles: Random Word, Complete, Sample, W-Method
-* Import and Export of symbol sets
-* Export of Hypotheses as JSON and SVG
+* Import and Export of symbol sets and projects
+* Export of hypotheses as JSON and SVG
 * Export of internal data structures
 
 
@@ -56,19 +56,19 @@ Action
     button, filling out input fields and submitting forms. **REST** actions allow to define actions with
     a REST API and **General** actions allow interoperability between actions and symbols.
 
-Learning Configuration
-:   For each learning process, a learning configuration has to be created. It consists of an alphabet, which is a set
-    of created symbols, a reset symbol (a symbol that is used to reset an application before each MQ), a learning
+Learn Configuration
+:   For each learn process, a learn configuration has to be created. It consists of an alphabet, which is a set
+    of created symbols, a reset symbol (a symbol that is used to reset an application before each MQ), a learn
     algorithm and an equivalence oracle. Of cause the length the alphabet has to contain at least one symbol and reset
     symbol is required as well.
 
-Learning Resume Configuration
-:     A learning resume configuration is needed when the learner finished learning and the user wants to continue the
+Learn Resume Configuration
+:     A learn resume configuration is needed when the learner finished learning and the user wants to continue the
       process. Therefore, it only consists of an equivalence oracle.
 
-Learning Result
-:   As soon as a learning process has finished, a learning result is generated for each step the learner took to generate
-    the final hypothesis. For each step, it contains the actual learning configuration, statistics and the hypothesis as
+Learn Result
+:   As soon as a learn process has finished, a learn result is generated for each step the learner took to generate
+    the final hypothesis. For each step, it contains the actual learn configuration, statistics and the hypothesis as
     a JSON representation.
 
 
@@ -82,7 +82,7 @@ on the points listed below:
 2. Optionally create several symbol groups
 3. Create a set of symbols, including one that handles the reset logic
 4. Create actions for each symbol
-5. Model a learning process and start learning
+5. Model a learn process and start learning
 6. Display the hypothesis, internal data structures, analyze the statistics
 
 
@@ -120,7 +120,7 @@ on the following URLs lead to different parts of the application.
 
 Projects are the entities that are used to manage multiple applications separately in ALEX. You can for example create
 a project for your application in version x and another one for version x+1 while having a different set of symbols and
-saved learning results.
+saved learn results.
 
 Most of the URLs listed in the previous section require a project to be *opened*, which means has been selected from the
 applications start page. It is then saved in the session storage of the web browser. In case a project is persisted no
@@ -139,7 +139,7 @@ the session storage, either by clicking the menu item from the main navigation o
 
 The URL of a new project has to start with *http://* or *https://* followed by at least one further character for the
 host. Technically, any host can be entered and therefore any web site can be learned. Due to the traffic that is caused
-by the learning process, it is recommended to only learn web applications you are the owner of, be it a local or a
+by the learn process, it is recommended to only learn web applications you are the owner of, be it a local or a
 remote host.
 
 If the creation has been successful a user should be redirected to the front page where the newly created project is
@@ -150,13 +150,19 @@ In order to switch to another project you have to close the current one at first
 found in the menu under the navigation point with the name of the opened project. It redirects to the front-page. For
 working on multiple projects simultaneously, you can open another tab and call ALEX from that one again.
 
-Deleting and updating projects can be done under the premise that there is no active learning process with the project,
+Deleting and updating projects can be done under the premise that there is no active learn process with the project,
 Before deleting a project, make sure you have exported your symbols, hypotheses and/or statistics because with the
 deleting of a project, all these values are deleted from the server, too.
 
+#### Export & Import
+
+In the project overview, you will find an entry in the dropdown menu beside each project that allows you to export the
+corresponding project. Import it in the same view by clicking on the import tab. Then, drag the json file in the visible
+field and click on the button \"Import Project\". Change the name of the project in case there is already one with the 
+same name.
+
 
 ### Symbol Management
-
 
 #### Symbol Groups
 
@@ -227,16 +233,17 @@ and ALEX offers a subset of these that are presented in the table below.
 |--------------------|-------------------------------------------------------|
 | Check Node         | Check if a certain element is present on the website. |
 | Check Text         | Check if a certain text is part of the website body.  |
-| Check Title        | Checks if the page title is a certain string          |
+| Check Title        | Checks if the page title is a certain string.         |
 | Clear              | Clear an input field.                                 |
 | Click              | Click on an element.                                  |
-| Click Link By Text | Click on a link with a specific text value            |
+| Click Link By Text | Click on a link with a specific text value.           |
+| Execute JavaScript | Execute a JavaScript snipped in the page.             |
 | Fill               | Clear and fill an input field with some text.         |
 | Goto               | Request a specific site.                              |
 | Submit             | Submit a form.                                        |
 | Select             | Select an option form an select input field.          |
-| Wait for Title     | Wait until the title of a page changes                |
-| Wait for Node      | Wait until the state of an element changes            |
+| Wait for Title     | Wait until the title of a page changes.               |
+| Wait for Node      | Wait until the state of an element changes.           |
 
 More detailed information about all the parameters of each web action is omitted as this point, since the forms in the
 front-end should be labeled sufficiently.
@@ -314,20 +321,20 @@ String and Integer values to other actions.
 
 <div class="alert alert-info">
     The wait action can be useful for background tasks or AJAX calls, but should be used with care because it can slow
-    down the learning process.
+    down the learn process.
 </div>
 
 
 ##### Working with Counters, Variables and Files
 
 Many web applications handle dynamic data and allow file uploads. In order to model and learn such behaviours and to
-allow interaction between different symbols, actions and learning processes, *counters*, *variables* and *files* are
+allow interaction between different symbols, actions and learn processes, *counters*, *variables* and *files* are
 introduced.
 
 Counter
 :   As the name indicates counters are integer values that are persisted in the database per project. They
     can be incremented and set at will. Commonly they are used to create multiple objects of the same kind. Counters
-    can help to model a system reset and thereby allow a consecutive execution of multiple learning processes without
+    can help to model a system reset and thereby allow a consecutive execution of multiple learn processes without
     having to manually reset the application in between every test.   
 
 Variables
@@ -335,7 +342,7 @@ Variables
 
 Files
 :   In order to learn websites that allow its users to upload files, this feature can be used as well. Make sure the
-    file that should be uploaded for learning purposes has been imported to the project of the website.
+    file that should be uploaded for learn purposes has been imported to the project of the website.
 
 In order to make use of those in actions, there is a notation that has to be used in action fields, as presented in the
 following table.
@@ -395,10 +402,6 @@ The action would look like this:
 Changing a symbol in any way results in the creation of a new revision of it. A previous state of a symbol can be
 recovered.
 
-__Info:__ If you revert a symbol with revision *x* to a previous revision *x-i*, a new symbol with the revision *x+1* is
-created. If you have any actions that execute other symbols, you have to manually adjust those, so that they call the
-most current symbol (In case this is wanted).
-
 
 #### Export & Import
 
@@ -418,9 +421,10 @@ text editor by hand and uploading them to the system is given. Therefore, the fi
 ```
 
 
+
 ### Learning Experiment Modeling
 
-In order to start learning an application, a learning process has to be modeled. Such a process always consists of the
+In order to start learning an application, a learn process has to be modeled. Such a process always consists of the
 following components:
 
 * An input alphabet (set of symbols)
@@ -442,7 +446,7 @@ Steps to learn
     learning from this point.
 
 Comment
-:   Furthermore a comment can be added that makes it easier to identify a specific learning result between others. The
+:   Furthermore a comment can be added that makes it easier to identify a specific learn result between others. The
     comment is a string value with a maximum amount of 120 characters.
 
 Driver
@@ -467,7 +471,7 @@ W-Method
 :       Uses the W-Method introduced in "Testing software design modeled by finite state machines" by T.S. Chow.
         This method can be restricted with a maximum depth.
 
-In order to simplify the modeling phase, only the learning alphabet and the reset symbol has to be chosen. As default, the TTT algorithm is selected in combination with the random word oracle. A click on the button with the label "start" starts the learning process with the given configuration. The user gets redirected to a loading screen where the generated hypothesis is displayed as soon as the server generated one.
+In order to simplify the modeling phase, only the alphabet and the reset symbol has to be chosen. As default, the TTT algorithm is selected in combination with the random word oracle. A click on the button with the label "start" starts the learning process with the given configuration. The user gets redirected to a loading screen where the generated hypothesis is displayed as soon as the server generated one.
 
 <div class="alert alert-info">
     The usage of the TTT algorithm is generally preferred from a users view as it outperforms the other algorithms in
@@ -489,7 +493,7 @@ process started are displayed.
 
 ### Hypothesis Interaction
 
-The possibility to interact with generated models can be separated into two phases. The first one is while a learning
+The possibility to interact with generated models can be separated into two phases. The first one is while a learn
 process is running and the second one is after having finished learning an applications. The latter is dealt with in the
 section [Learning Experiment Analysis <b class="caret"></b>](#Learning_Experiment_Analysis "Learning Experiment Analysis").
 
@@ -515,7 +519,7 @@ discrimination trees can be downloaded in the SVG format.
 
 #### Testing Counterexamples
 
-In between two iterations of a learning process it is possible to search and test counterexamples directly on the
+In between two iterations of a learn process it is possible to search and test counterexamples directly on the
 displayed hypothesis and then start the next iteration with respect to entered counterexamples. This process follows
 this patter:
 
@@ -524,14 +528,14 @@ this patter:
 3. In the widget click on the button *\"Test\"*
 4. A notification will tell whether the word is a counterexample or not
 5. Click on the button *\"Add\"* to add the counterexample the list that is considered for refinement
-6. Proceed with step 1 or resume the learning process
+6. Proceed with step 1 or resume the learn process
 
 Note that while testing a word and it results in being a counterexample, its output labels are automatically switched
 to the actual output sequence. The list of symbols can be arranged with drag and drop for quickly testing different
 words. Once a counterexample has been added to the list, it can be edited by clicking on it.
 
 The server assumes that all words given by a user for the refinement actually are counterexamples. If this is not the
-case the learning process may fail and the application may have to be restarted by killing the running process.
+case the learn process may fail and the application may have to be restarted by killing the running process.
 
 <div class="alert alert-info">
     It is recommended to always check for counterexamples manually after a hypothesis has been created.
@@ -561,9 +565,9 @@ By clicking on the red button in a panel, the column is removed and the size of 
 
 #### Statistics
 
-On the statistics page a list of learning results is presented.
+On the statistics page a list of learn results is presented.
 It is either possible to generate a bar chart of a selection of final results or an area chart.
-This one not only includes the cumulated values, but displays all values of all iterations of each step of multiple learning processes.
+This one not only includes the cumulated values, but displays all values of all iterations of each step of multiple learn processes.
 Statistics can be generated for the following values:
 
 * The number of conducted membership queries
@@ -579,5 +583,5 @@ In the second case the visibility of single tests can be toggled by clicking on 
 
 ![Charts](../../assets/images/charts.jpg)
 
-Another aspect to mention is that statistics are generated on the fly and are bound to a learning result.
-In case the learning result is deleted, the statistics can not be shown any longer.
+Another aspect to mention is that statistics are generated on the fly and are bound to a learn result.
+In case the learn result is deleted, the statistics can not be shown any longer.

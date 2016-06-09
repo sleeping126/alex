@@ -28,7 +28,8 @@ Every actions can also have two special attributes
 {
     ...
     "negated": true|false,
-    "ignoreFailure": true|false
+    "ignoreFailure": true|false,
+    "disabled": true|false
 }
 ```
 
@@ -45,6 +46,14 @@ Every actions can also have two special attributes
 {
     "type": "web_checkForText",
     "value": "Lorem Ipsum"
+}
+```
+
+```json
+{
+    "type": "web_checkPageTitle",
+    "title": "page title",
+    "regexp": true|false
 }
 ```
 
@@ -86,6 +95,13 @@ Every actions can also have two special attributes
 
 ```json
 {
+    "type": "web_executeScript",
+    "script": "window.alert('hi!')"
+}
+```
+
+```json
+{
     "type": "web_select",
     "node": "#input",
     "value": "Lorem Ipsum"
@@ -96,6 +112,24 @@ Every actions can also have two special attributes
 {
     "type": "web_submit",
     "node": "#node_id"
+}
+```
+
+```json
+{
+    "type": "web_waitForNode",
+    "node": "#node_id",
+    "maxWaitTime": 2000,
+    "waitCriterion": "VISIBLE|INVISIBLE|ADDED|REMOVED"
+}
+```
+
+```json
+{
+    "type": "web_waitForTitle",
+    "value": "page title",
+    "maxWaitTime": 2000,
+    "waitCriterion": "IS|CONTAINS"
 }
 ```
 
@@ -163,6 +197,24 @@ Call a url:
 
 ```json
 {
+  "type": "assertCounter",
+  "name": "counter",
+  "value": 4,
+  "operator": "LESS_THAN|LESS_OR_EQUAL|EQUAL|GREATER_OR_EQUAL|GREATER_THAN"
+}
+```
+
+```json
+{
+  "type": "assertVariable",
+  "name": "variable",
+  "value": "value",
+  "regexp": true|false
+}
+```
+
+```json
+{
   "type": "incrementCounter",
   "name": "counter"
 }
@@ -189,6 +241,15 @@ Call a url:
   "type": "setVariableByJSON",
   "name": "variable",
   "value": "foobar"
+}
+```
+
+```json
+{
+  "type": "setVariableByNodeAttribute",
+  "name": "variable",
+  "node": "#nodeId",
+  "attribute": "href" 
 }
 ```
 

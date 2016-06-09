@@ -2,7 +2,6 @@
 
 Automata Learning Experience (ALEX) is a web application that allows you run automated tests on web applications and JSON-based REST services using Active Automata Learning.
 
-
 ## How it works
 
 Let us take a look at the example of an authentication system.
@@ -21,26 +20,25 @@ With ALEX, we follow a different, more automated approach that
 3. separates the language specific tests from the application to test.
 
 Assume the authentication system mentioned above has the following features: _register_, _login_ and _logout_.
-Then, we model each feature independent of each other using Selenium.
+Then, we model each feature independent of each other using e.g. [Selenium](http://www.seleniumhq.org/).
 In Active Automata Learning, this set of testable features is called **alphabet** where the elements of the alphabet are called **symbols**.
 A sequence of symbols is called a **word**.
 
 We then pass the learning alphabet to a **learner** that uses specific algorithms to create a model of the underlying application and how it behaves based on the given symbols.
-Therefore, words are executed on the real system under learning and its reactions observed.
-Finally, the learner creates a **hypothesis** as an output that is modeled as a Mealy Machine.
+Therefore, words are executed on the real system under learning and its reactions are observed.
+Finally, the learner creates a **hypothesis** as an output that is modeled as a [Mealy machine](https://en.wikipedia.org/wiki/Mealy_machine).
 In this example, it would hopefully look like this:
 
-*insert image here*
+![Hypothesis](assets/images/hypothesis.jpg)
 
 As it can be seen, the learner has learned the application and all features work as intended.
 From here on, more symbols can be added and learned.
 
 It can be that the learner has not learned the application correctly, i.e. there is a word in the model that has a different output than the actual application.
-In fact, one can never be a 100% sure, if the model actually represents the system under learning.
-How to check for and handle these errors is described in the user manual.
+In fact, one can never be a 100% sure if the model actually represents the system under learning.
+How to check for and handle these mistakes is described in the [user manual](http://learnlib.github.io/alex/book/1.1/contents/user-manual/index.html).
 
-If you want to know more about Active Automata Learning in depth, head over to available papers on that topic.
-
+If you want to know more about Active Automata Learning, you can find some resources at [Google Scholar](https://scholar.google.de/scholar?hl=de&q=active+automata+learning) or the homepage of the [LearnLib](http://learnlib.de/).
 
 ## Installation and first login
 
@@ -57,9 +55,9 @@ Password: *admin*
 
 Make sure you have Java 8 installed on your system.
 
-1. Download the latest version from here.
-2. Open a terminal and start the jar file using `java -jar alex.war [--port=PORT]`
-3. Open *http://localhost:8000* (or with your custom port) in a web browser
+1. Download the latest version. [Download](https://github.com/LearnLib/alex/releases/download/v1.1/ALEX-1.1.war)
+2. Open a terminal and start the war archive using `java -jar ALEX.war [--port=XXXX]`
+3. Open *http://localhost:8000* in a web browser
 
 #### From source
 
@@ -68,26 +66,21 @@ For the Installation from the source files make sure your system matches the fol
 * Java JDK 8
 * Maven 3
 * Node.js v4.2.* and the NPM
-* Bower `npm install -g bower`
-* Grunt and Grund-Cli `npm install -g grunt grunt-cli`
 
-To install and run ALEX, Execute the following commands:
+To install and run ALEX, execute the following commands in a directory of your choice:
 
-1. `git clone https://github.com/learnlib/alex.git`
+1. `git clone https://github.com/LearnLib/alex.git`
 2. `cd alex`
 3. `mvn install [-DskipTests]`
-4. `mvn spring-boot:run [-Dport=PORT]`
-5. open *http://localhost:8000* (or with your custom port) in a web browser
-
+4. `cd main`
+5. `mvn spring-boot:run [-Dport=XXXX]`
+6. open *http://localhost:8000* in a web browser
 
 ## Further reading
 
-* Frontend user manual
-* REST API documentation
-* Screencasts
-* Developer docs
-* Papers on Active Automata Learning
-
+* [Frontend user manual](http://learnlib.github.io/alex/book/1.1/contents/user-manual/index.html)
+* [Screencasts](http://learnlib.github.io/alex/book/1.1/contents/screencasts/index.html)
+* [Developer docs](http://learnlib.github.io/alex/book/1.1/contents/developer-documents/index.html)
 
 ## FAQs
 
@@ -117,16 +110,10 @@ But feel free to test it on your Raspberry PI.
 Initially, we did not develop ALEX as a solution to all situations that may occur in a web application, but to the most common ones.
 If you think a key feature is missing, feel free to submit an issue and we will see what we can do.
 
-
-## Maintainers
-
-* [Alexander Bainczyk](mailto:alexander.bainczyk@tu-dortmund.de)
-* [Alexander Schieweck](mailto:alexander.schieweck@tu-dortmund.de)
-
+*Note: Surprisingly, neither of the above questions have been asked at any point in time. But it it still a neat way to package information that do not fit anywhere else in the documentation.*
 
 [java]:   https://java.com
 [maven]:  https://maven.apache.org
 [nodejs]: https://nodejs.org
 [grunt]:  http://gruntjs.com
 [bower]:  http://bower.io
-
