@@ -116,6 +116,17 @@ on the following URLs lead to different parts of the application.
 *Except for the about, help, error and the home page, all other routes require that a user is logged in and a project has been created and is opened.*
 
 
+### Application Settings
+
+There are some global application specific settings only admins can edit.
+
+#### Webdriver
+
+For learning web applications, we use Selenium to interact with web browsers. Per default, only the headless HTMLUnitDriver is supported, but it does not work very well with websites that make heavy use of JavaScript. Luckily, there are third party drivers, that allow executing tests on Firefox, Chrome etc. In order to use them, you have to download the corresponding executables and specify them in ALEX on the settings page as depicted in the following image (here for Windows):
+
+![Comparison of hypotheses](../../assets/images/settings.jpg)
+
+
 ### Project Management
 
 Projects are the entities that are used to manage multiple applications separately in ALEX. You can for example create
@@ -158,7 +169,7 @@ deleting of a project, all these values are deleted from the server, too.
 
 In the project overview, you will find an entry in the dropdown menu beside each project that allows you to export the
 corresponding project. Import it in the same view by clicking on the import tab. Then, drag the json file in the visible
-field and click on the button \"Import Project\". Change the name of the project in case there is already one with the 
+field and click on the button \"Import Project\". Change the name of the project in case there is already one with the
 same name.
 
 
@@ -235,11 +246,12 @@ and ALEX offers a subset of these that are presented in the table below.
 | Check Text         | Check if a certain text is part of the website body.  |
 | Check Title        | Checks if the page title is a certain string.         |
 | Clear              | Clear an input field.                                 |
-| Click              | Click on an element.                                  |
+| Click              | Click or double click on an element.                  |
 | Click Link By Text | Click on a link with a specific text value.           |
 | Execute JavaScript | Execute a JavaScript snipped in the page.             |
 | Fill               | Clear and fill an input field with some text.         |
 | Goto               | Request a specific site.                              |
+| Move Mouse         | Move the cursor to a specific element or coordinates  |
 | Submit             | Submit a form.                                        |
 | Select             | Select an option form an select input field.          |
 | Wait for Title     | Wait until the title of a page changes.               |
