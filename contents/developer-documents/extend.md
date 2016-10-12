@@ -1,15 +1,15 @@
 Extend *ALEX*
 =============
-*ALEX* is designed to be expandable to some extends.
+*ALEX* is designed to be expandable to some extend.
 
-Add a new Algorithm
+Add a new algorithm
 -------------------
 Create new class in the algorithm package with implements `LearnAlgorithmFactory` and
 annotate it with `@LearnAlgorithm(name = "...")`.
 
 Implement the methods. 
 
-Add a new Action
+Add a new action
 ----------------
 Extend `SymbolAction` and implement the method `execute(ConnectorManager connector)`.
 

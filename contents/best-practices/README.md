@@ -23,7 +23,7 @@ Instead, we think it is good if you create something in between those extremes. 
 Each point can be modelled as a symbol and the learned model will tell you clearly what is possible and what is not while still be able to easily find possible errors in an application.
 
 
-## Modeling authentication systems
+## Modelling authentication systems
 
 ### Basic HTTP Authentication
 
@@ -31,7 +31,7 @@ The *Call* action and the *Open URL* action both support the specification of cr
 
 ### JSON Web Tokens
 
-JWTs are usually used to authenticate against REST APIs by sending an encoded token in the Authorization header like *Authorization: Bearer \<token\>*. 
+JWTs are usually used to authenticate against REST APIs by sending an encoded token in the Authorization header like *Authorization: Bearer TOKEN*. 
 In ALEX, you can specify HTTP headers in the *Call* action.
 
 

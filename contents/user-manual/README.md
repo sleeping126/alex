@@ -16,7 +16,7 @@ on active automata learning. Based on the function set of the <a href="http://le
 and inspired by the <a href="http://ls5-www.cs.tu-dortmund.de/projects/learnlib/download.php">LearnLib Studio</a> the
 application lays a focus on the ease to use of the tool while offering an extensive feature set:
 
-* Active Automata Learing of web applications and web services
+* Active Automata Learning of web applications and web services
 * Support for managing and learning multiple applications
 * Graphical symbol construction
 * Graphical learn process modelling
@@ -26,8 +26,8 @@ application lays a focus on the ease to use of the tool while offering an extens
     * Statistics regarding learn results
 * Simultaneous learning of web applications and web services
 * Supported algorithms: L\*, TTT, Discrimination Tree, DHC
-* Supported equivalence oracles: Random Word, Complete, Sample, W-Method
-* Import and Export of symbol sets and projects
+* Supported equivalence oracles: Random Word, Complete, Sample, W-Method, Hypothesis
+* Import and export of symbol sets and projects
 * Export of hypotheses as JSON and SVG
 * Export of internal data structures
 
@@ -106,12 +106,14 @@ on the following URLs lead to different parts of the application.
 | /symbols                            | Create, update & delete symbol groups and symbols         |
 | /symbols/\<symbolId\>/actions       | Manage actions of a specific symbol                       |
 | /symbols/\<symbolId\>/history       | Restore old revisions of a specific symbol                |
+| /symbols/test                       | Build and test sequences of symbols                       |
 | /symbols/trash                      | Restore deleted symbols                                   |
 | /symbols/import                     | Import symbols from a \*.json file                        |
 | /results                            | Lists all finished final learning results of a project    |
-| /results/<testNos>/compare          | Show the hypotheses of the processes with <testNos>       |
+| /results/\<testNos\>/compare          | Show the hypotheses of the processes with <testNos>       |
+| /settings                           | Specify web drivers                                       |
 | /statistics                         | Show a list of learner results and choose some for stats  |
-| /statistics/<testNos>/compare       | Show statistics for learner results with <testNos>        |
+| /statistics/\<testNos\>/compare       | Show statistics for learner results with <testNos>        |
 
 *Except for the about, help, error and the home page, all other routes require that a user is logged in and a project has been created and is opened.*
 
@@ -242,6 +244,7 @@ and ALEX offers a subset of these that are presented in the table below.
 
 | Name               | Description                                           |
 |--------------------|-------------------------------------------------------|
+| Check attribute    | Checks the value of an attribute of an element        |
 | Check Node         | Check if a certain element is present on the website. |
 | Check Text         | Check if a certain text is part of the website body.  |
 | Check Title        | Checks if the page title is a certain string.         |
@@ -250,8 +253,9 @@ and ALEX offers a subset of these that are presented in the table below.
 | Click Link By Text | Click on a link with a specific text value.           |
 | Execute JavaScript | Execute a JavaScript snipped in the page.             |
 | Fill               | Clear and fill an input field with some text.         |
-| Goto               | Request a specific site.                              |
+| Open URL           | Request a specific site.                              |
 | Move Mouse         | Move the cursor to a specific element or coordinates  |
+| Press key          | Press a special key on the keyboard                   |
 | Submit             | Submit a form.                                        |
 | Select             | Select an option form an select input field.          |
 | Wait for Title     | Wait until the title of a page changes.               |
@@ -433,8 +437,7 @@ text editor by hand and uploading them to the system is given. Therefore, the fi
 ```
 
 
-
-### Learning Experiment Modeling
+### Learning Experiment Modelling
 
 In order to start learning an application, a learn process has to be modeled. Such a process always consists of the
 following components:
@@ -449,7 +452,7 @@ Algorithm
 :   There are currently four algorithms supported: L*, Discrimination Tree, DHC and TTT.
 
 Equivalence oracle
-:    ALEX supports four kinds of oracles. Those are: *Random Word*, *Complete* *W-Method" and the last one is
+:    ALEX supports four kinds of oracles. Those are: *Random Word*, *Complete*, *W-Method", ** and the last one is
     *Sample*. The first three oracles approximate equivalence queries automatically to find counterexamples while when using
     *Sample*, you are asked to search and enter them by yourself in between iterations.   
 
@@ -477,11 +480,15 @@ Complete
         a generated word, <em>maxDepth</em> the maximum length.
 
 Sample
-:   If this oracle is chosen, counterexamples are searched by hand by the user.
+:       If this oracle is chosen, counterexamples are searched by hand by the user.
 
 W-Method
 :       Uses the W-Method introduced in "Testing software design modeled by finite state machines" by T.S. Chow.
         This method can be restricted with a maximum depth.
+        
+Hypothesis
+:       Uses an ideal model of an application to search for separating words and uses them as counterexamples.
+        The abbreviations should match with the ideal model.
 
 In order to simplify the modeling phase, only the alphabet and the reset symbol has to be chosen. As default, the TTT algorithm is selected in combination with the random word oracle. A click on the button with the label "start" starts the learning process with the given configuration. The user gets redirected to a loading screen where the generated hypothesis is displayed as soon as the server generated one.
 

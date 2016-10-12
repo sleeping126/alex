@@ -35,6 +35,16 @@ Every actions can also have two special attributes
 
 ### Web Actions
 
+````json
+{
+    "type": "web_checkNodeAttributeValue",
+    "node": "#node",
+    "attribute": "class",
+    "value": "visible",
+    "checkMethod": "IS|CONTAINS|MATCHES"
+}
+```
+
 ```json
 {
     "type": "web_checkForNode",
@@ -112,6 +122,15 @@ Every actions can also have two special attributes
 {
     "type": "web_submit",
     "node": "#node_id"
+}
+```
+
+```json
+{
+    "type": "web_moveMouse",
+    "node": "#node",
+    "offsetX": 10,
+    "offsetY": 10
 }
 ```
 

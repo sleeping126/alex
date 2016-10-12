@@ -1,6 +1,6 @@
 # Developer docs
 
-Some documents that are usefull for developers.
+Some documents that are useful for developers.
 
 ## Build a release
 
@@ -10,7 +10,7 @@ To build a packaged version of ALEX from the source, make sure you checked out t
 mvn clean package
 ```
 
-Afterwards the *ALEX-xxx.tar.gz* archive is created in the `target` directory.
+Afterwards the *ALEX-xxx.war* archive is created in the `target` directory.
 
 
 ## Command Line Arguments
@@ -52,22 +52,18 @@ All frontend files are in the webapp directory in _alex/main/src/main/webapp_.
 
 ### Requirements
 
-* node.js v4.1.* or higher
-* grunt-cli `npm install -g grunt-cli`
-* bower `npm install -g bower`
+* node.js v4.6.* or higher
 
-### Grunt commands
+### NPM commands
 
-There are several grunt tasks commands to automate the development workflow.
+There are several npm commands to automate the development workflow.
 In the _webapp_ folder, use the following commands.
 
-| Command  | Description |
-|----------|-------------|
-| `grunt`  | build all the application files |
-| `grunt watch` | compile sass, html and js files every time they are changed |
-| `grunt test` | execute all unit tests |
-
-*For a more detailed information on all grunt tasks, look at the gruntfile.js in the webapp folder*
+| Command          | Description                                                 |
+|------------------|-------------------------------------------------------------|
+| `npm run build`  | Build all the application files                             |
+| `npm run dev`    | Compile sass, html and js files every time they are changed |
+| `npm test`       | Execute all unit tests                                      |
 
 
 ## Authentication with the REST API

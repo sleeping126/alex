@@ -10,6 +10,7 @@
         * [Learn](contents/examples/todo/learn.md)
         * [Refine](contents/examples/todo/refine.md)
         * [View Results](contents/examples/todo/results.md)
+    * [TodoMVC](contents/examples/todomvc/README.md)
     * [Wordpress](contents/examples/wordpress/README.md)
 * [Best Practices](contents/best-practices/README.md)
 * [Screencasts](contents/screencasts/README.md)
