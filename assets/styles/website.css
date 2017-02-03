@@ -122,3 +122,12 @@
 .alert-danger .alert-link {
     color: #843534;
 }
+
+#book-search-input {
+	background: #7daa28;
+	color: #fff;
+}
+
+#book-search-input input::-webkit-input-placeholder {
+   color: rgba(255,255,255,.5);
+}

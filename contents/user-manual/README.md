@@ -402,7 +402,10 @@ The action would look like this:
     ...
     "actions" : [{
         "type" : "web_fill",
-        "node" : "#fileInput",
+        "node" : {
+            "selector" : "#fileInput",
+            "type" : "CSS" 
+        },
         "value" : "{{\filename.ext}}"
     }]
 }, ... ]

@@ -2,6 +2,11 @@
 
 _This is a step by step instruction on how to test the REST API of Wordpress 4.4 with ALEX_
 
+<div class="alert alert-info">
+    There is a more up-to-date version of Wordpress and the REST API plugin out there. We do not garantie that this
+    tutorial still works.
+</div>
+
 ## Prepare Wordpress
 
 1. Install PHP and MySQL, e.g. via XAMPP, LAMPP etc

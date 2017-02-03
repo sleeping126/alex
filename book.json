@@ -1,5 +1,5 @@
 {
-  "gitbook": "2.0.0",
+  "gitbook": "3.2.2",
   "title": "ALEX",
   "description": "Documentation for ALEX",
   "language": "en",
@@ -8,7 +8,7 @@
     "website": "assets/styles/website.css"
   },
   "variables": {
-    "version": "1.2.0"
+    "version": "1.2.1"
   },
   "links": {
     "sidebar": {

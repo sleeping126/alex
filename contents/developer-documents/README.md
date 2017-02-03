@@ -52,7 +52,7 @@ All frontend files are in the webapp directory in _alex/main/src/main/webapp_.
 
 ### Requirements
 
-* node.js v4.6.* or higher
+* node.js v6.9.* or higher
 
 ### NPM commands
 

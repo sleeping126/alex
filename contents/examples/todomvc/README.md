@@ -41,7 +41,7 @@ Adjust the URL and the symbol sets accordingly.
 1. In the project overview, create a new project with the URL of a TodoMVC implementation as a base URL, e.g. *http://localhost:8080/examples/angularjs/* if you want to learn AngularJS
 2. Click on the newly created project
 3. In the left menu, under the group *Symbols*, click on the item *Import* to import an already given symbol set
-4. Drop the *2016-09-19_TodoMVC_Angular.symbols.json* in the corresponding field
+4. Drop the *angular-symbols.json* in the corresponding field
 5. Select all symbols and click on *Import*
 
 #### Learn TodoMVC
