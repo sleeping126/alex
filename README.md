@@ -1,6 +1,6 @@
 # ALEX
 
-Automata Learning Experience (ALEX) is a web application that allows you run automated tests on web applications and JSON-based REST services using Active Automata Learning.
+Automata Learning EXperience (ALEX) is a web application that allows you easily infer models of web applications and JSON-based REST services using active automata learning.
 
 ## How it works
 
@@ -48,8 +48,11 @@ We also advise to use a modern web browser like Google Chrome >= v46, Mozilla Fi
 
 After the first start, you can login as admin backend using the account below.
 
-Email: *admin@alex.example* <br>
-Password: *admin*
+<div class="alert alert-info">
+    <strong>Admin Account</strong><br>
+    Email: admin@alex.example <br>
+    Password: admin
+</div>
 
 #### Using the packaged version
 
@@ -65,20 +68,22 @@ For the Installation from the source files make sure your system matches the fol
 
 * Java JDK 8
 * Maven 3
-* Node.js v4.6.* and the NPM
+* Node.js v6.9.* and the NPM
 
 To install and run ALEX, execute the following commands in a directory of your choice:
 
 1. `git clone https://github.com/LearnLib/alex.git`
-2. `cd alex`
-3. `mvn install [-DskipTests]`
-4. `cd main`
-5. `mvn spring-boot:run [-Dport=XXXX]`
-6. open *http://localhost:8000* in a web browser
+2. `cd alex/main/src/main/webapp`
+3. `npm install`
+4. `cd ../../../..`
+5. `mvn install [-DskipTests]`
+6. `cd main`
+7. `mvn spring-boot:run [-Dport=XXXX]`
+8. open *http://localhost:8000* in a web browser
 
 ## Further reading
 
-* [Frontend user manual](http://learnlib.github.io/alex/book/1.2.1/contents/user-manual/index.html)
+* [User manual](http://learnlib.github.io/alex/book/1.2.1/contents/user-manual/index.html)
 * [Developer docs](http://learnlib.github.io/alex/book/1.2.1/contents/developer-documents/index.html)
 
 ## FAQs
@@ -89,7 +94,7 @@ As far as we are concerned, we used the application to learn applications like B
 
 **Could I potentially learn any available application that is accessible over the internet?** <br>
 Yes, you could, but really should not do that, since testing usually takes a lot of traffic, and your test targets may not like it.
-But we do not programmatically prohibit it either.
+But we do not pragmatically prohibit it either.
 The primary use case is to use ALEX for testing applications that are installed locally or in the same network.
 
 **Do I really not have to have any programming experience?** <br>
@@ -108,8 +113,6 @@ But feel free to test it on your Raspberry PI.
 **I want to learn a specific feature of my application but ALEX does not provide a way to model it. What can I do?** <br>
 Initially, we did not develop ALEX as a solution to all situations that may occur in a web application, but to the most common ones.
 If you think a key feature is missing, feel free to submit an issue and we will see what we can do.
-
-*Note: Surprisingly, neither of the above questions have been asked at any point in time. But it it still a neat way to package information that do not fit anywhere else in the documentation.*
 
 [java]:   https://java.com
 [maven]:  https://maven.apache.org
