@@ -34,39 +34,36 @@ application lays a focus on the ease to use of the tool while offering an extens
 
 ## Working Objects
 
-Project
-:   A project is the main object that the following objects belong to. It is bound to a unique name and a URL that
-    starts with *"http\[s\]://"*. This property defines the root URL of an application to be learned. In ALEX it is
+<dl>
+    <dt>Project</dt>
+    <dd>A project is the main object that the following objects belong to. It is bound to a unique name and a URL that
+    starts with *"http\[s\]://"*. This property defines the root URL of the application under testing. In ALEX it is
     allowed to create and manage multiple projects, thus, for example, allowing to treat a web application and a web
     service as different projects or managing multiple complete different applications. A project can have multiple URLs
-    where *the same* application can be accessed to make use of parallelisation techniques.
-
-Symbol Group
-:   Each project has a list of symbol groups. Symbol groups are logical container for symbols. They allow to group 
+    where *the same* application can be accessed to make use of parallelisation techniques.</dd>
+    <dt>Symbol Group</dt>
+    <dd>Each project has a list of symbol groups. Symbol groups are logical container for symbols. They allow to group 
     symbols, for example by their purpose or a feature. They are defined by a unique name. For every project, there is 
-    a default group with the name Default Group which can not be deleted.
-
-Symbol
-:   Symbols are used by the learner to learn an application. They are defined by a unique name and an abbreviation.
-    The latter is shown as an edge label of the learned model of an application to make it visually clear. Each symbol
-    consists of an ordered list of actions that define the actual logic of the symbol once it is executed.
-
-Action
-:   Actions are atomic operations on an application. In ALEX, there are three types. **Web** actions are
-    inspired by Selenium and directly interact with the web interface of an application that for example is clicking a
-    button, filling out input fields and submitting forms. **REST** actions allow to define actions with
-    a REST API and **General** actions allow interoperability between actions and symbols.
-
-Learn Configuration
-:   For each learn process, a learn configuration has to be created. It consists of an alphabet, which is a set
+    a default group with the name <em>"Default Group"</em> which can not be deleted.</dd>
+    <dt>Symbol</dt>
+    <dd>Symbols are used by the learner to learn an application. They are defined by a unique name and an abbreviation.
+    The latter is shown as an edge label of the inferred model to make it visually clear. Each symbol
+    consists of an ordered list of actions that define the actual logic of the symbol once it is executed.</dd>
+    <dt>Action</dt>
+    <dd>Actions are atomic operations on an application. In ALEX, there are three types. <strong>Web</strong> actions are
+    inspired by Selenium and directly interact with the web interface of an application that is for example is clicking a
+    button, filling out input fields and submitting forms. <strong>REST</strong> actions allow to define actions with
+    a REST API and <strong>General</stromg> actions allow interoperability between actions and symbols.</dd>
+    <dt>Learn Configuration</dt>
+    <dd>For each learn process, a learn configuration has to be created. It consists of an alphabet, which is a set
     of created symbols, a reset symbol (a symbol that is used to reset an application before each MQ), a learn
     algorithm, an equivalence oracle and some other parameters. Of cause the length the alphabet has to contain at 
-    least one symbol and reset symbol is required as well.
-
-Learn Result
-:   As soon as a learn process has finished, a learn result is generated for each step the learner took to generate
+    least one symbol and reset symbol is required as well.</dd>
+    <dt>Learn Result</dt>
+    <dd>As soon as a learn process has finished, a learn result is generated for each step the learner took to generate
     the final hypothesis. For each step, it contains the actual learn configuration, statistics and the hypothesis as
-    a JSON representation.
+    a JSON representation.</dd>
+</dl>
 
 
 ## Workflow
@@ -101,18 +98,27 @@ on the following URLs lead to different parts of the application.
 | /projects                           | Shows a list of all projects of a user                    |
 | /projects/dashboard                 | Shows the dashboard of the opened project                 |
 | /symbols                            | Create, update & delete symbol groups and symbols         |
-| /symbols/\<symbolId\>/actions       | Manage actions of a specific symbol                       |
-| /symbols/\<symbolId\>/history       | Restore old revisions of a specific symbol                |
+| /symbols/&lt;symbolId&gt;/actions   | Manage actions of a specific symbol                       |
+| /symbols/&lt;symbolId&gt;/history   | Restore old revisions of a specific symbol                |
 | /symbols/test                       | Build and test sequences of symbols                       |
 | /symbols/trash                      | Restore deleted symbols                                   |
 | /symbols/import                     | Import symbols from a \*.json file                        |
 | /results                            | Lists all finished final learning results of a project    |
-| /results/\<testNos\>/compare        | Show the hypotheses of the processes with <testNos>       |
+| /results/&lt;testNos&gt;/compare    | Show the hypotheses of the processes with <testNos>       |
 | /settings                           | Specify web drivers                                       |
 | /statistics                         | Show a list of learner results and choose some for stats  |
-| /statistics/\<testNos\>/compare     | Show statistics for learner results with <testNos>        |
+| /statistics/&lt;testNos&gt;/compare | Show statistics for learner results with <testNos>        |
 
 *Except for the about, help, error and the home page, all other routes require that a user is logged in and a project has been created and is opened.*
+
+
+### User Management
+
+There are two roles in ALEX: _ADMIN_ and _USER_ where admins are allowed to update and delete normal users. 
+At the first start a default admin account is created which you can use instantly to login into the application:
+
+Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _admin@alex.example_<br>
+Password: _admin_
 
 
 ### Application Settings
@@ -131,13 +137,12 @@ In order to use them, you have to download the corresponding executables and spe
 
 ### Project Management
 
-Projects are the entities that are used to manage multiple applications separately in ALEX. You can for example create
-a project for your application in version x and another one for version x+1 while having a different set of symbols and
-saved learn results.
+Projects are the entities that are used to manage multiple target applications in ALEX. You can for example create
+a project for your application in version x and another one for version x+1 while having a different sets of input symbols.
 
 Most of the URLs listed in the previous section require a project to be *opened*, which means has been selected from the
 applications start page. It is then saved in the session storage of the web browser. In case a project is persisted no
-other project can be opened in the same tab. The use of multiple tabs allow to open and work with multiple projects at a
+other project can be opened in the same tab. The use of multiple tabs allows to open and work with multiple projects at a
 time. In order to switch to another project of the same tab, it has to be *closed*. That means it has to be removed from
 the session storage, either by clicking the menu item from the main navigation or by closing the current tab.
 
@@ -211,14 +216,14 @@ several properties.
 | symbol group  | Optionally the symbol group the symbol should be created in can be passed. If this property is not given, the symbol is moved to the default group |
 
 Note that once you *delete* a symbol it is not permanently removed from the server, but hidden. As a consequence, they
-can be made visible by going to */symbols/trash* or by clicking the corresponding menu entry in the main menu. There, a
+can be made visible by going to */symbols/trash* or by clicking the corresponding menu entry in the sidebar. There, a
 list of all hidden symbols is given. Recovering a symbol makes it appear again in the group it previously was in. In
 case the group has been deleted, the symbol is moved to the default group.
 
 
 #### Actions
 
-The function of a symbol is defined by its actions and their execution order. An action can be understood as a real
+The functionality of a symbol is defined by its actions and their execution order. An action can be understood as a real
 interaction with a system, like clicking on buttons, submitting forms, making requests to an API and so on.
 
 In order to manage actions of a single symbol, go to */symbols/\<symbolId\>/actions* or click on the link below a symbol
@@ -269,7 +274,7 @@ front-end should be labeled sufficiently.
 
 If you play around a little with the action editor, you may realize that most web actions require you to enter a CSS or
 and XPath selector to an affected element. This may be not that easy to find out in case you are not very familiar with 
-HTML. So, there is a button that is labeled with *\"Element Picker\"*. This is a special feature of ALEX for selecting 
+HTML. So, there is a button that is labeled with *"Element Picker"*. This is a special feature of ALEX for selecting 
 HTML elements from your website directly without having to know HTML. Note that this only extracts CSS selectors.
 
 
@@ -287,13 +292,13 @@ be applied with Firefox.
 1. Load a URL by entering a path relative to the base URL of the project in the URL bar on the top left.
 2. Click on the button with the wand symbol. All elements should now get a thick red border as soon as you hover over it.
 3. Click on the element you need the CSS path from. The selection mode should be disabled.
-4. Click on the button with the label \"ok\" on the top right. The CSS path should automatically be entered in the correct
+4. Click on the button with the label "ok" on the top right. The CSS path should automatically be entered in the correct
 input element.
 
 In the case that clicking on an element does not work as indented, probably because of some JavaScript, pressing the
-\"Ctrl\" button on the keyboard has the same effect as a click, but does not fire a click event.
+"Ctrl" button on the keyboard has the same effect as a click, but does not fire a click event.
 
-For some actions, like \"CheckText\", the HTML element picker can be used as well. With the same method, it automatically
+For some actions, like "CheckText", the HTML element picker can be used as well. With the same method, it automatically
 extracts the textContent value of an element and pastes the content to the corresponding input field. This also works
 with the "Fill" action. Enter a value in the desired input field, select the element with the HTML element picker and it
 extracts both, the value and the CSS path of it.
@@ -352,26 +357,32 @@ Many web applications handle dynamic data and allow file uploads. In order to mo
 allow interaction between different symbols, actions and learn processes, *counters*, *variables* and *files* are
 introduced.
 
-Counter
-:   As the name indicates counters are integer values that are persisted in the database per project. They
-    can be incremented and set at will. Commonly they are used to create multiple objects of the same kind. Counters
-    can help to model a system reset and thereby allow a consecutive execution of multiple learn processes without
-    having to manually reset the application in between every test.   
-
-Variables
-:   Variables can only contain String values and are kept alive for a single membership query.
-
-Files
-:   In order to learn websites that allow its users to upload files, this feature can be used as well. Make sure the
-    file that should be uploaded for learn purposes has been imported to the project of the website.
+<dl>
+    <dt>Counter</dt>
+    <dd>
+        As the name indicates counters are integer values that are persisted in the database per project. They
+        can be incremented and set at will. Commonly they are used to create multiple objects of the same kind. Counters
+        can help to model a system reset and thereby allow a consecutive execution of multiple learn processes without
+        having to manually reset the application in between every test.
+    </dd>
+    <dt>Variables</dt>
+    <dd>
+        Variables can only contain String values and are kept alive for a single membership query.
+    </dd>
+    <dt>Files</dt>
+    <dd>
+        In order to learn websites that allow its users to upload files, this feature can be used as well. Make sure the
+        file that should be uploaded for learn purposes has been imported to the project of the website.
+    </dd>
+</dl>
 
 In order to make use of those in actions, there is a notation that has to be used in action fields, as presented in the
 following table.
 
-| Notation          | Description                                                           |
-|-------------------|-----------------------------------------------------------------------|
-| {{counterName}}  | The value of the counter with the name *counterName* is inserted      |
-| {{$variableName}} | The value of the variable with the name *variableName* is inserted    |
+| Notation           | Description                                                           |
+|--------------------|-----------------------------------------------------------------------|
+| {{counterName}}    | The value of the counter with the name *counterName* is inserted      |
+| {{$variableName}}  | The value of the variable with the name *variableName* is inserted    |
 | {{\\filename.ext}} | The absolute path of the file *filename.ext* is inserted              |
 
 As an example for the use of counters and variables, let there be a variable *userName* with the value \'*Admin*\' and
@@ -425,7 +436,7 @@ The action would look like this:
 #### Export & Import
 
 If you want to save a set of symbols for another project or use already existing ones, the export and import function
-might be of interest for you. Note that when exporting symbols, their revision, id and group are deleted in order to be
+might be of interest for you. Note that when exporting symbols, their id and group are deleted in order to be
 compatible with other projects.
 
 ALEX supports the import from and export in a JSON file. Technically, the possibility of creating symbols with a simple
@@ -452,57 +463,74 @@ following components:
 * A maximum amount of steps to learn
 * A specification of a web browser
 
-Algorithm
-:   There are currently five algorithms supported: L*, Discrimination Tree, DHC, Kearns & Vazirani and TTT.
-
-Equivalence oracle
-:    ALEX supports five kinds of oracles. Those are: *Random Word*, *Complete*, *W-Method*, *Sample* and *Hypothesis*. 
-     The first three oracles approximate equivalence queries automatically to find counterexamples while when using
-    *Sample*, you are asked to search and enter them by yourself in between iterations. 
-    If the *Hypothesis* EQ oracle is used, the shortest separating word between the learned and the given model is used as counterexample.
-    This however presumes that the alphabets of both models are equal.
-
-Steps to learn
-:   You can also define how many hypotheses should be generated at maximum. When the learner stops, you can still continue
-    learning from this point.
-
-Comment
-:   Furthermore a comment can be added that makes it easier to identify a specific learn result between others. The
-    comment is a string value with a maximum amount of 120 characters.
-
-Driver
-:   Choose a web browser where the tests should be run in. 
-    Per default, the headless HTML Unit Driver is selected. 
-    For all others, make sure you have it installed, otherwise the application might crash.
-    Also, define the size of the browser window. 
-    If the height and width are set to *0px*, the web drivers predefined dimensions are used.
-    
-Membership Query Cache
-:   If membership queries should be cached. Enabling this option often reduces the total learning time.
+<dl>
+    <dt>Algorithm</dt>
+    <dd>
+        There are currently five algorithms supported: L*, Discrimination Tree, DHC, Kearns & Vazirani and TTT.
+    </dd>
+    <dt>Equivalence oracle</dt>
+    <dd>
+        ALEX supports five kinds of oracles. Those are: <em>Random Word</em>, <em>Complete</em>, <em>W-Method</em>, <em>Sample</em> and <em>Hypothesis</em>. 
+        The first three oracles approximate equivalence queries automatically to find counterexamples while when using
+        <em>Sample</em>, you are asked to search and enter them by yourself in between iterations. 
+        If the <em>Hypothesis</em> EQ oracle is used, the shortest separating word between the learned and the given model is used as counterexample.
+        This however presumes that the alphabets of both models are equal.
+    </dd>
+    <dt>Steps to learn</dt>
+    <dd>
+        You can also define how many hypotheses should be generated at maximum. When the learner stops, you can still continue
+        learning from this point.
+    </dd>
+    <dt>Comment</dt>
+    <dd>
+        Furthermore a comment can be added that makes it easier to identify a specific learn result between others. The
+        comment is a string value with a maximum amount of 120 characters.
+    </dd>
+    <dt>Web driver</dt>
+    <dd>
+        Choose a web browser where the tests should be run in. 
+        Per default, the headless HTML Unit Driver is selected. 
+        For all others, make sure you have it installed, otherwise the application might crash.
+        Also, define the size of the browser window. 
+        If the height and width are set to <em>0px</em>, the web drivers predefined dimensions are used.
+    </dd>
+    <dt>Membership query cache</dt>
+    <dd>
+        If membership queries should be cached. Enabling this option often reduces the total learning time.
+    </dd>
+</dl>
 
 The mentioned equivalence oracles have different strategies on how to find counterexamples. 
 Each one can be configured with different parameters that define their behaviour.
 
-Random Word
-:       The Random Word oracle approximates equivalence queries by generating random words from learned symbol set and
+<dl>
+    <dt>Random Word</dt>
+    <dd>
+        The Random Word oracle approximates equivalence queries by generating random words from learned symbol set and
         executes them on the learned applications. The oracles expects three parameters: <em>minLength</em> defines the
         minimum length of a generated word, <em>maxLength</em> the maximum length and <em>numberOfWords</em> the amount
         of randomly generated words to test.
-
-Complete
-:       This oracle generates all possible word within some limits. <em>minDepth</em> describes the minimum length of
+    </dd>
+    <dt>Complete</dt>
+    <dd>
+        This oracle generates all possible word within some limits. <em>minDepth</em> describes the minimum length of
         a generated word, <em>maxDepth</em> the maximum length.
-
-Sample
-:       If this oracle is chosen, counterexamples are searched by hand by the user.
-
-W-Method
-:       Uses the W-Method introduced in "Testing software design modeled by finite state machines" by T.S. Chow.
+    </dd>
+    <dt>Sample</dt>
+    <dd>
+        If this oracle is chosen, counterexamples are searched by hand by the user.
+    </dd>
+    <dt>W-Method</dt>
+    <dd>
+        Uses the W-Method introduced in "Testing software design modeled by finite state machines" by T.S. Chow.
         This method can be restricted with a maximum depth.
-        
-Hypothesis
-:       Uses an ideal model of an application to search for separating words and uses them as counterexamples.
-        The abbreviations should match with the ideal model.
+    </dd>
+    <dt>Hypothesis</dt>
+    <dd>
+        Uses an ideal model of an application to search for separating words and uses them as counterexamples.
+        Note that the input alphabets should be the same.
+    </dd>
+</dl>  
 
 In order to simplify the modeling phase, only the alphabet and the reset symbol has to be chosen. 
 As default, the TTT algorithm is selected in combination with the random word oracle. 
@@ -539,8 +567,8 @@ Hypotheses are displayed as Mealy Machines and represent the learned behaviour o
 labeled from 0 to n. The green node represents the initial state. Depending on the failed or successful execution of a
 symbol, edges are labeled as follows:
 
-- \<abbreviation\>/OK
-- \<abbreviation\>/FAILED(\<number\>)
+- &lt;abbreviation&gt;/OK
+- &lt;abbreviation&gt;/FAILED(&lt;number&gt;)
 
 The first one indicates that the symbol with the displayed abbreviation could be executed successfully. The second one
 shows that the execution of the symbol has failed. The number gives a hint on what action resulted in the failure. The
@@ -549,7 +577,7 @@ expression *FAILED(1)* for example tells that the first action of the symbol has
 
 #### Internal Data Structures
 
-ALEX provides the visualisation of the *Observation Table* that is used by the *L\** algorithm and the *Discrimination
+ALEX provides the visualisation of the *Observation Table* that is used by the *LStar* algorithm and the *Discrimination
 Tree* from the equally named algorithm. Both are saved for each iteration the learner executes and can be displayed in
 the same panel corresponding hypothesis is presented in. While observation tables can be exported as a CSV file,
 discrimination trees can be downloaded in the SVG format.
@@ -574,10 +602,6 @@ words. Once a counterexample has been added to the list, it can be edited by cli
 
 The server assumes that all words given by a user for the refinement actually are counterexamples. If this is not the
 case the learn process may fail and the application may have to be restarted by killing the running process.
-
-<div class="alert alert-info">
-    It is recommended to always check for counterexamples manually after a hypothesis has been created.
-</div>
 
 
 ### Learning Experiment Analysis
